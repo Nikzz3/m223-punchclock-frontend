@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <notifications group="createError" position="top center" />
+    <Navbar />
+    <notifications group="errors" position="top center" />
     <router-view />
   </div>
 </template>
+<script lang="ts">
+import Vue from 'vue';
+import Navbar from './components/Navbar/Navbar.vue';
+
+export default Vue.extend({
+  name: 'App',
+  components: {
+    Navbar
+  }
+});
+</script>
 
 <style></style>

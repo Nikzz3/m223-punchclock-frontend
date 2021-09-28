@@ -12,18 +12,18 @@
     </modal>
     <form @submit.prevent="createEntry">
       <div class="form-group">
-        <label>Check In Date</label>
+        <label>Eincheckdatum</label>
         <input type="date" class="form-control" placeholder="Enter Date" v-model="checkInDate" required />
-        <label>Check In Time</label>
+        <label>Eincheckzeit</label>
         <input type="time" class="form-control" placeholder="Enter Time" v-model="checkInTime" required />
       </div>
       <div class="form-group">
-        <label>Check Out Date</label>
+        <label>Auscheckdatum</label>
         <input type="date" class="form-control" placeholder="Enter Date" v-model="checkOutDate" required />
-        <label>Check Out Time</label>
+        <label>Auscheckzeit</label>
         <input type="time" class="form-control" placeholder="Enter Time" v-model="checkOutTime" required />
       </div>
-      <button type="submit" class="btn btn-primary mt-3">Save</button>
+      <button type="submit" class="btn btn-primary mt-3">Speichern</button>
     </form>
     <table class="table">
       <thead>
@@ -31,8 +31,8 @@
           <th scope="col">#</th>
           <th scope="col">CheckIn</th>
           <th scope="col">CheckOut</th>
-          <th scope="col">Update</th>
-          <th scope="col">Delete</th>
+          <th scope="col">Bearbeiten</th>
+          <th scope="col">Löschen</th>
         </tr>
       </thead>
       <tbody>

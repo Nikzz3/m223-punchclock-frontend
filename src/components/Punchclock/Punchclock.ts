@@ -32,7 +32,7 @@ export default Vue.extend({
           this.reset();
         })
         .catch(() => {
-          Vue.notify({ group: 'createError', title: 'Error', text: 'CheckOut cannot be before CheckIn', type: 'error' });
+          Vue.notify({ group: 'errors', title: 'Fehler', text: 'Auscheckdatum darf nicht vor Eincheckdatum sein', type: 'error' });
           this.checkOutDate = '';
           this.checkOutTime = '';
         });
