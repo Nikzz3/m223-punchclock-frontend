@@ -13,9 +13,15 @@ export default Vue.extend({
   },
   methods: {
     async createLogin(): Promise<void> {
-      console.log(this.username, this.password, this.repeatedPassword);
       if (this.password === this.repeatedPassword) {
-        const response: AxiosResponse = await APIService.signUp({ username: this.username, password: this.password });
+        // Role will be replaced in the backend
+        const response: AxiosResponse = await APIService.signUp({
+          // Id will be replaced in the backend
+          id: 0,
+          username: this.username,
+          password: this.password,
+          role: { id: 1, name: '' }
+        });
         if (response.status === 200) {
           this.$router.push('/login');
         } else {

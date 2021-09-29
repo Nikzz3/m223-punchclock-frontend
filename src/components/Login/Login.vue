@@ -10,6 +10,7 @@
       </div>
       <button type="submit" class="btn btn-primary mt-3">Anmelden</button>
     </form>
+    <button class="btn btn-secondary mt-3" @click="$router.push('/registration')">Registrierung</button>
   </div>
 </template>
 

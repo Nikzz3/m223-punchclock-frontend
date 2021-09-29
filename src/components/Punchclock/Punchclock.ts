@@ -5,6 +5,7 @@ import { BIconTrash, BIconPencilSquare } from 'bootstrap-vue';
 import UpdatePunchclock from '../UpdatePunchclock/UpdatePunchclock.vue';
 import { RawEntry } from '@/models/RawEntry';
 import Helpers from '@/services/Helpers';
+import { Category } from '../../models/Category';
 
 export default Vue.extend({
   name: 'Punchclock',
@@ -16,15 +17,22 @@ export default Vue.extend({
       checkOutTime: '',
       checkOutDate: '',
       entries: [] as Entry[],
-      entryToUpdate: {} as RawEntry
+      entryToUpdate: {} as RawEntry,
+      categories: [] as Category[],
+      selectedCategory: {} as Category
     };
   },
   methods: {
     createEntry(): void {
+      if (this.selectedCategory.name === undefined) {
+        Vue.notify({ group: 'errors', title: 'Fehler', text: 'Wähle eine Kategorie aus', type: 'error' });
+        return;
+      }
       const finalEntry = {
         id: '',
         checkIn: Helpers.dateAndTimeToDate(this.checkInDate, this.checkInTime),
-        checkOut: Helpers.dateAndTimeToDate(this.checkOutDate, this.checkOutTime)
+        checkOut: Helpers.dateAndTimeToDate(this.checkOutDate, this.checkOutTime),
+        category: this.selectedCategory
       };
       APIService.createEntry(finalEntry)
         .then((res) => {
@@ -39,7 +47,7 @@ export default Vue.extend({
     },
 
     updateEntry(entry: Entry): void {
-      this.entryToUpdate = Helpers.revertDateAndTimeToDate(entry.id, entry.checkIn, entry.checkOut);
+      this.entryToUpdate = Helpers.revertDateAndTimeToDate(entry.id, entry.checkIn, entry.checkOut, this.selectedCategory);
       this.$modal.show('updateEntry');
     },
 
@@ -57,9 +65,14 @@ export default Vue.extend({
 
     async getEntries(): Promise<void> {
       this.entries = await APIService.getEntries();
+    },
+
+    selectCategory(category: Category): void {
+      this.selectedCategory = category;
     }
   },
   async mounted(): Promise<void> {
     this.getEntries();
+    this.categories = await APIService.getCategories();
   }
 });

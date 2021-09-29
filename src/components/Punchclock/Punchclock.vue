@@ -7,6 +7,7 @@
         :checkInTimeProp="entryToUpdate.checkInTime"
         :checkOutDateProp="entryToUpdate.checkOutDate"
         :checkOutTimeProp="entryToUpdate.checkOutTime"
+        :category="entryToUpdate.category"
         @updated="getEntries"
       />
     </modal>
@@ -23,6 +24,12 @@
         <label>Auscheckzeit</label>
         <input type="time" class="form-control" placeholder="Enter Time" v-model="checkOutTime" required />
       </div>
+
+      <div>
+        <b-dropdown id="dropdown-1" text="Kategorie auswählen" class="mt-3">
+          <b-dropdown-item v-for="category in categories" :key="category.id" @click="selectCategory(category)">{{ category.name }}</b-dropdown-item>
+        </b-dropdown>
+      </div>
       <button type="submit" class="btn btn-primary mt-3">Speichern</button>
     </form>
     <table class="table">
@@ -31,15 +38,19 @@
           <th scope="col">#</th>
           <th scope="col">CheckIn</th>
           <th scope="col">CheckOut</th>
+          <th scope="col">Kategorie</th>
+          <th scope="col">Benutzer</th>
           <th scope="col">Bearbeiten</th>
           <th scope="col">Löschen</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="entry in entries" :key="entry.id">
-          <th>{{ entry.id }}</th>
+        <tr v-for="(entry, index) in entries" :key="entry.id">
+          <th>{{ index }}</th>
           <td>{{ entry.checkIn }}</td>
           <td>{{ entry.checkOut }}</td>
+          <td>{{ entry.category.name }}</td>
+          <td>{{ entry.user.username }}</td>
           <td><BIconPencilSquare font-scale="1.5" @click="updateEntry(entry)" /></td>
           <td><BIconTrash variant="danger" font-scale="1.5" @click="deleteEntry(entry.id)" /></td>
         </tr>

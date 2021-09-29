@@ -1,5 +1,6 @@
 import { RawEntry } from '@/models/RawEntry';
 import { addHours } from 'date-fns';
+import { Category } from '../models/Category';
 
 export default {
   dateAndTimeToDate(dateString: string, timeString: string): string {
@@ -7,9 +8,16 @@ export default {
     return addHours(new Date(`${dateString}T${timeString}`), 2).toISOString();
   },
 
-  revertDateAndTimeToDate(id: string, inDate: string, outDate: string): RawEntry {
+  revertDateAndTimeToDate(id: string, inDate: string, outDate: string, category: Category): RawEntry {
     const inDateSplit = inDate.split('T');
     const outDateSplit = outDate.split('T');
-    return { id: id, checkInDate: inDateSplit[0], checkInTime: inDateSplit[1], checkOutDate: outDateSplit[0], checkOutTime: outDateSplit[1] };
+    return {
+      id: id,
+      checkInDate: inDateSplit[0],
+      checkInTime: inDateSplit[1],
+      checkOutDate: outDateSplit[0],
+      checkOutTime: outDateSplit[1],
+      category
+    };
   }
 };
