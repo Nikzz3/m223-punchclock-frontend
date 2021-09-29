@@ -1,0 +1,35 @@
+commit 0d8896581f396ef4095963973298e038bb90aa44
+Author: Nick Zimmermann <nick.zimmermann@swisscom.com>
+Date:   Wed Sep 29 16:26:10 2021 +0200
+
+    added navbar, admin page, updated models, updated login and registration
+
+commit e54a91870ac202ae405ad26bf938afb11a1593cc
+Author: Nick Zimmermann <nick.zimmermann@swisscom.com>
+Date:   Tue Sep 28 20:57:00 2021 +0200
+
+    added Login and registration page and functionality, added Navbar
+
+commit a37b18b2c9c2d0c6adb72918a01fb211af978c33
+Author: Nick Zimmermann <nick.zimmermann@swisscom.com>
+Date:   Tue Sep 28 20:56:03 2021 +0200
+
+    update APIService to match backend
+
+commit 7e5bffe3c80922d838cd814586c3c1c7092625db
+Author: Nick Zimmermann <nick.zimmermann@swisscom.com>
+Date:   Tue Sep 28 20:55:04 2021 +0200
+
+    added some types
+
+commit 571b307431dd79284dcfc4b837cd92674b7418e7
+Author: Nick Zimmermann <Nick.Zimmermann@swisscom.com>
+Date:   Sun Sep 26 20:12:55 2021 +0200
+
+    added Punchclock, models, services and CRUD
+
+commit 11799579fef092ab590a2d40397aaa9b7ca6e1b3
+Author: Nick Zimmermann <Nick.Zimmermann@swisscom.com>
+Date:   Sun Sep 26 20:10:54 2021 +0200
+
+    initial commit
